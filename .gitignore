@@ -1,0 +1,2 @@
+# do not include the virtual environment in the repo
+env/
