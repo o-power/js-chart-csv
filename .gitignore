@@ -1,2 +1,5 @@
 # do not include the virtual environment in the repo
 env/
+
+# do not include visual code settings
+.vscode/
