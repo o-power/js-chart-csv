@@ -1,5 +1,5 @@
 Promise.all([
-    d3.csv("static/data/world_population.csv")
+    d3.csv("static/data/world-population.csv")
 ]).then(function(files) {
     makeGraphs(files[0]);
 }).catch(function(err) {
@@ -7,7 +7,7 @@ Promise.all([
 });
 
 function makeGraphs(worldPopulation) {
-    // Take arrays read from CSVs and call chart functions.
+    // Takes arrays read from CSVs and calls chart functions.
 
     //console.log(worldPopulation);
     /*
@@ -27,5 +27,33 @@ function makeGraphs(worldPopulation) {
         d.Population = parseInt(d.Population);
     });
 
-    console.log(worldPopulation);
+    //console.log(worldPopulation);
+
+    labels_array = [];
+    data_array = [];
+    for (let i = 0; i < worldPopulation.length; i++) {
+        labels_array.push(worldPopulation[i].Country);
+        data_array.push(worldPopulation[i].Population);
+    }
+
+    drawBarChart(labels_array, data_array);
+}
+
+function drawBarChart(labels_array, data_array) {
+    // Draws bar chart using Chart.js
+
+    const ctx = document.getElementById("bar-chart");
+
+    const barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels_array,
+            datasets: [
+                {
+                    label: "Population",
+                    data: data_array
+                }
+            ]
+        }
+    });
 }
