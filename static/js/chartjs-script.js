@@ -27,5 +27,5 @@ function makeGraphs(worldPopulation) {
         d.Population = parseInt(d.Population);
     });
 
-    //console.log(worldPopulation);
+    console.log(worldPopulation);
 }
